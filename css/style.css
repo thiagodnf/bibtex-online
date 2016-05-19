@@ -1,0 +1,52 @@
+body{
+    overflow-y: scroll;
+}
+
+.tab-content{
+    margin-top: 6px;
+}
+
+.dataTables_filter, .dataTables_length, .dataTables_info { display: none; }
+
+#custom-bootstrap-menu.navbar-default .navbar-brand {
+	color: rgba(255, 255, 255, 1);
+}
+#custom-bootstrap-menu.navbar-default {
+	font-size: 14px;
+	background-color:#337ab7;
+	border-width: 1px;
+	border-radius: 0px;
+	border-color: rgba(72, 120, 160, 1);
+	-webkit-box-shadow: 0px 1.5px 5px 0px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow:    0px 1.5px 5px 0px rgba(50, 50, 50, 0.75);
+	box-shadow:         0px 1.5px 5px 0px rgba(50, 50, 50, 0.75);
+}
+#custom-bootstrap-menu.navbar-default .navbar-nav>li>a {
+	color: rgba(255, 255, 255, 1);
+	background-color: #337ab7;
+}
+#custom-bootstrap-menu.navbar-default .navbar-nav>li>a:hover,
+#custom-bootstrap-menu.navbar-default .navbar-nav>li>a:focus {
+	color: rgba(44, 75, 102, 1);
+	background-color: #337ab7;
+}
+#custom-bootstrap-menu.navbar-default .navbar-nav>.active>a,
+#custom-bootstrap-menu.navbar-default .navbar-nav>.active>a:hover,
+#custom-bootstrap-menu.navbar-default .navbar-nav>.active>a:focus {
+	color: rgba(255, 255, 255, 1);
+	background-color: #337ab7;
+}
+#custom-bootstrap-menu.navbar-default .navbar-toggle {
+	border-color: white;
+}
+#custom-bootstrap-menu.navbar-default .navbar-toggle:hover,
+#custom-bootstrap-menu.navbar-default .navbar-toggle:focus {
+	background-color: #276091
+}
+#custom-bootstrap-menu.navbar-default .navbar-toggle .icon-bar {
+	background-color: white
+}
+#custom-bootstrap-menu.navbar-default .navbar-toggle:hover .icon-bar,
+#custom-bootstrap-menu.navbar-default .navbar-toggle:focus .icon-bar {
+	background-color: #337ab7;
+}
