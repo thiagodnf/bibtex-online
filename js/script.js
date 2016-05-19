@@ -13,7 +13,7 @@ function getDomain(url) {
     var $a = $('<a href="'+url+'">Demo</a>');
     var uri = $a.uri();
     return uri.domain();
-};
+}
 
 function isUrlValid(url){
     var expression = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
@@ -38,15 +38,25 @@ function loadBibtextFileFromUrl(url){
             // Display the results on the screen
 			publications.draw();
 
+            if(publications.warnings.length !== 0){
+                $("#number-warnings").removeClass("hide");
+            }
+
+            $("#number-warnings").text(publications.warnings.length);
+
             $("#warnings").html();
 
             $.each(publications.warnings, function(index, value){
-                $("#warnings").append("<p class='bg-danger'>" + value.warning + "</p>");
-                $("#warnings").append("<p>" + value.entry + "</p>");
+                var warning = "<div class='alert alert-danger' role='alert'>";
+                    warning += "<h4>" + value.warning + "</h4>";
+                    warning += "<p>" + value.entry + "</p>";
+                    warning += "</div>";
+
+                $("#warnings").append(warning);
             });
         },
         error: function(response){
-            alert(response)
+            alert(response);
         }
     });
 }
@@ -82,12 +92,15 @@ $(function(){
         if (event.ctrlKey || event.metaKey) {
             if(String.fromCharCode(event.which).toLowerCase() == 'f'){
                 event.preventDefault();
-                // Change the tab
-                $('a[href="#tab-publications"]').trigger('click');
                 // Put the cursor in the input
                 $("#search").focus();
             }
         }
+    });
+
+    $( "#search" ).focusin(function() {
+        // Change the tab when the search input get focus
+        $('a[href="#tab-publications"]').trigger('click');
     });
 
     $("#search").bind("copy keyup", function() { //change # to the ID of your field
@@ -97,8 +110,10 @@ $(function(){
             return;
         }
 
-        publications.table.search(search).draw('true')
+        publications.table.search(search).draw('true');
     });
+
+    // Show spin when a ajax request be sent
 
     $(document).ajaxStart(function(){
         showSpin();
@@ -109,14 +124,12 @@ $(function(){
     // Show the current url to user
     $('#modal-new-bibtex-file').on('show.bs.modal', function () {
         $("#url").val(getUrl());
-        // Put the cursor in the input
-
     });
 
+    // Set focus to input when the modal is shown
     $('#modal-new-bibtex-file').on('shown.bs.modal', function () {
-        // Set focus to input when the modal is shown
         $("#url").focus();
-    })
+    });
 
     $("#btn-menu-open").click(function(){
         showTheInputModal();
@@ -125,12 +138,7 @@ $(function(){
     $("#btn-open").click(function (event) {
         var url = $("#url").val();
 
-        // Select all text
-    //    $("#url").select();
-
-
-
-        if(url == undefined || url == ""){
+        if(url === undefined || url === ""){
             return alert("The URL cannot be undefined or empty");
         }
 
